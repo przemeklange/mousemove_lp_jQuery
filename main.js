@@ -18,14 +18,14 @@ jQuery(document).ready(function() {
 			responsive: false,
 			useMouseMove: true,
 			useGyroscope: true,
-			alphaFilter: 0.9,			// use Low Pass Filter to smooth sensor readings (1 = no filter)
+			alphaFilter: 0.9,			
 			motionType: 'natural',
 			mouseMotionType: 'gaussian',
-			inputPriority: 'mouse',		// define which input device has priority over the other 'mouse' or 'gyroscope'
-			motionAngleX: 80,			// (0 < motionAngle < 90) delta angle that is used to render max parallax in this direction
+			inputPriority: 'mouse',		
+			motionAngleX: 80,			
 			motionAngleY: 80,
-			adjustBasePosition: true,	// using Low Pass Filter to adjust base position
-			alphaPosition: 0.05			// alpha for Low Pass Filter used to adjust average position
+			adjustBasePosition: true,	
+			alphaPosition: 0.05			
 		},
 
 		positionProperty = {
@@ -40,12 +40,12 @@ jQuery(document).ready(function() {
 			}
 		},
 
-		// approximation of Gaussian cumulative distribution function with parameter a to influence standard deviation sigma
+		
 		gCDFApprox = function(x, a) {
 			return 1 / (1 + Math.exp(-(0.07056*a*(x^3))-(1.5976*a*x)));
 		},
 
-		// low pass filter for motion events (http://en.wikipedia.org/wiki/Low-pass_filter)
+		
 		lowPassFilter = function(curSignal, prevSignal, alpha) {
 			if (prevSignal === null) return curSignal;
 			if (typeof alpha === "undefined") alpha = 0.5;
@@ -80,7 +80,7 @@ jQuery(document).ready(function() {
 			}
 		},
 
-		// Returns a function which adds a vendor prefix to any CSS property name
+		
 		vendorPrefix = (function() {
 			var prefixes = /^(Moz|Webkit|Khtml|O|ms|Icab)(?=[A-Z])/,
 				style = $('script')[0].style,
@@ -260,8 +260,7 @@ jQuery(document).ready(function() {
 		},
 		_defineSetters: function() {
 
-		// define setters
-		// set position of elements
+		
 
 			var self = this,
 				positionPropertyAdapter = positionProperty[self.options.positionProperty];
@@ -348,7 +347,7 @@ jQuery(document).ready(function() {
 				if (!$this.data('parallaxify-ElementIsActive')) {
 					$this.data('parallaxify-ElementIsActive', this);
 				} else if ($this.data('parallaxify-ElementIsActive') !== this) {
-					return; // stop, because already set previously
+					return; 
 				}
 
 				// saving/restoring original positions
